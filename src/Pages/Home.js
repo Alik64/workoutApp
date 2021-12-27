@@ -4,12 +4,12 @@ import { appContext } from '../Context/appContext'
 
 
 export default function Home() {
-    const { exo } = useContext(appContext)
+    const { activities } = useContext(appContext)
 
     return (
         <div>
             <h1>Choice your workout</h1>
-            {exo.map((activity, index) => {
+            {activities.map((activity, index) => {
                 return (
                     <div key={index}>
                         <Activity activity={activity} />
