@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import Category from '../Components/Category'
+import Category from '../Components/Category/Category'
 import { appContext } from '../Context/appContext'
 
 
