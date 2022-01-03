@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { activities } from "../data";
+import { data } from "../data";
 
 export const appContext = createContext()
 
@@ -11,7 +11,7 @@ export default function AppContextProvider(props) {
 
 
     return (
-        <appContext.Provider value={{ activities }}>
+        <appContext.Provider value={{ data }}>
             {props.children}
         </appContext.Provider>
     )

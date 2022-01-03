@@ -1,18 +1,18 @@
 import React, { useContext } from 'react'
-import Activity from '../Components/Activity'
+import Category from '../Components/Category'
 import { appContext } from '../Context/appContext'
 
 
 export default function Home() {
-    const { activities } = useContext(appContext)
+    const { data } = useContext(appContext)
 
     return (
         <div>
             <h1>Choice your workout</h1>
-            {activities.map((activity, index) => {
+            {data.map((category, index) => {
                 return (
                     <div key={index}>
-                        <Activity activity={activity} />
+                        <Category category={category} />
                     </div>
                 )
             })}

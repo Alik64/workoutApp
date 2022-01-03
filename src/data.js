@@ -1,8 +1,8 @@
 
 
-export const activities = [
+export const data = [
     {
-        name: "Upper body",
+        category: "Upper body",
         id: 1,
         exercices: [
             "Pushup",
@@ -21,7 +21,7 @@ export const activities = [
         description: "UpperBody exercises"
     },
     {
-        name: "Leg day",
+        category: "Leg day",
         id: 2,
         exercices: [
             "Bridge",
@@ -35,7 +35,7 @@ export const activities = [
         description: " Don't forget this day!"
     },
     {
-        name: "Abs",
+        category: "Abs",
         id: 3,
         exercices: [
             "Bicycle crunch",
@@ -51,7 +51,7 @@ export const activities = [
         description: 'Get your "Six-Pack"'
     },
     {
-        name: "Cardio",
+        category: "Full body",
         id: 4,
         exercices: [
             "Jamping jack",
@@ -61,12 +61,7 @@ export const activities = [
         description: "You are your only limit"
 
     },
-    {
-        name: "Full body",
-        id: 5,
-        exercices: [],
-        description: " Let's go buddy !"
-    },
+
 ]
 
-window.activities = activities
+window.data = data
