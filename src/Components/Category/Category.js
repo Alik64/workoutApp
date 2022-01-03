@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Category.module.css'
 import { NavLink } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid'
+
 
 
 export default function Category({ category }) {

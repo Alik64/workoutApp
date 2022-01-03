@@ -3,6 +3,7 @@ import Category from '../Components/Category/Category'
 import { appContext } from '../Context/appContext'
 
 
+
 export default function Home() {
     const { data } = useContext(appContext)
 
