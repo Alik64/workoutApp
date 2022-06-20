@@ -1,18 +1,10 @@
-import { createContext } from "react";
-import { data } from "../data";
+import { createContext, useEffect, useState } from "react";
 
-export const appContext = createContext()
-
-
+export const appContext = createContext();
 
 export default function AppContextProvider(props) {
-
-
-
-
-    return (
-        <appContext.Provider value={{ data }}>
-            {props.children}
-        </appContext.Provider>
-    )
+  const [state, setState] = useState({});
+  return (
+    <appContext.Provider value={state}>{props.children}</appContext.Provider>
+  );
 }
