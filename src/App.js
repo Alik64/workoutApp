@@ -1,22 +1,17 @@
-import { Routes, Route } from 'react-router-dom'
-import './App.css';
-import Workout from './Components/Workout/Workout';
-import Home from './Pages/Home';
+import { Routes, Route } from "react-router-dom";
+
+import Home from "./Pages/Home";
+import NewWorkout from "./Pages/NewWorkout";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/workout">
-          <Route path="/workout:id" element={<Workout />} />
-        </Route>
+        <Route path="/newWorkout" element={<NewWorkout />} />
       </Routes>
     </div>
-
-
-
   );
 }
 

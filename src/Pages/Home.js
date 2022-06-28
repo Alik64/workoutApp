@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import Category from "../Components/Category/Category";
+
 import axios from "axios";
 import { appContext } from "../Context/appContext";
 
 export default function Home() {
-  const [data, setData] = useState();
-  console.table(data);
+  const [data, setData] = useState([]);
+  console.log('"Home page rendered" : ', "Home page rendered");
+  console.log("data : ", data);
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get("http://localhost:3000/api/v1/workouts");
+      const result = await axios.get("http://localhost:8080/api/v1/workouts");
       setData(result.data.data);
     };
     fetchData();
