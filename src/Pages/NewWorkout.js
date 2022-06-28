@@ -8,11 +8,10 @@ const NewWorkout = () => {
     mode: "",
     equipement: [],
     exercises: [],
-    trainerTips: [],
   };
 
   const [state, setState] = useState(initialState);
-  const [equipement, setEquipement] = useState("");
+  const [eq, setEq] = useState("");
   const [exercice, setExercice] = useState("");
 
   const handleInputChange = (e) => {
@@ -21,45 +20,63 @@ const NewWorkout = () => {
       [e.target.name]: e.target.value,
     }));
   };
-
-  const addEquipement = (e) => {
+  function addItem(e, name, value, cleanFunc) {
     e.preventDefault();
     setState((prevState) => ({
       ...prevState,
-      equipement: [...prevState.equipement, equipement],
+      [name]: [...prevState[name], `${value}`],
     }));
-    setEquipement("");
-  };
-  const removeEquipement = (eq) => {
+    cleanFunc();
+  }
+  function removeItem(item, name) {
     setState((prevState) => ({
       ...prevState,
-      equipement: [
-        ...prevState.equipement.filter((equipement) => equipement !== eq),
-      ],
+      [name]: [...prevState[name].filter((element) => element !== item)],
     }));
+  }
+
+  const addEquipement = (e) => {
+    addItem(e, "equipement", eq, () => setEq(""));
+  };
+  const removeEquipement = (eq) => {
+    removeItem(eq, "equipement");
   };
 
   const addExercises = (e) => {
-    e.preventDefault();
-    setState((prevState) => ({
-      ...prevState,
-      exercises: [...prevState.exercises, exercice],
-    }));
-    setExercice("");
+    addItem(e, "exercises", exercice, () => setExercice(""));
   };
   const removeExercises = (ex) => {
-    setState((prevState) => ({
-      ...prevState,
-      exercises: [...prevState.exercises.filter((exercise) => exercise !== ex)],
-    }));
+    removeItem(ex, "exercises");
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(state);
-    setState(initialState);
-    setEquipement("");
+  const sendWorkout = (state) => {
+    let data = JSON.stringify({
+      name: state.name,
+      mode: state.mode,
+      equipment: state.equipement,
+      exercises: state.exercises,
+    });
+
+    let config = {
+      method: "post",
+      url: "http://localhost:8080/api/v1/workouts/",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then((response) => console.log(JSON.stringify(response.data)))
+      .catch((error) => console.log(error));
+
+    setEq("");
     setExercice("");
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    sendWorkout(state);
+    setState(initialState);
   };
 
   return (
@@ -87,8 +104,8 @@ const NewWorkout = () => {
           title="Equipment"
           name="equipement"
           placeholder="Add equipement"
-          value={equipement}
-          onChange={(e) => setEquipement(e.target.value)}
+          value={eq}
+          onChange={(e) => setEq(e.target.value)}
           onClick={addEquipement}
         />
         <ArrayInput
