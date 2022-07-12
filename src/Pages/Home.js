@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import axios from "axios";
-import { appContext } from "../Context/appContext";
 
 export default function Home() {
   const [data, setData] = useState([]);
