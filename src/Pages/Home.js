@@ -4,8 +4,6 @@ import axios from "axios";
 
 export default function Home() {
   const [data, setData] = useState([]);
-  console.log('"Home page rendered" : ', "Home page rendered");
-  console.log("data : ", data);
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get("http://localhost:8080/api/v1/workouts");
@@ -18,7 +16,6 @@ export default function Home() {
     <div key={index}>
       <h2>{workout.name}</h2>
       <h3>Mode : {workout.mode}</h3>
-
       <ul>
         Exercises:
         {workout?.exercises?.map((exo, index) => (
@@ -27,7 +24,7 @@ export default function Home() {
       </ul>
     </div>
   ));
-
+  console.log('"render" : ', "render");
   return (
     <div>
       <h1>Choice your workout</h1>
