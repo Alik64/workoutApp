@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ArrayInput from "../Components/ArrayInput";
+import ArrayInput from "../Components/UI/ArrayInput";
+import { useDispatch, useSelector } from "react-redux";
+import { counterValueSelector, increment } from "../redux/counterSlice";
+import { useGetAllWorkoutsQuery } from "../redux/services/workoutsApi";
 
 const NewWorkout = () => {
   const initialState = {
@@ -24,7 +27,7 @@ const NewWorkout = () => {
     e.preventDefault();
     setState((prevState) => ({
       ...prevState,
-      [name]: [...prevState[name], `${value}`],
+      [name]: [...prevState[name], `${value}`.toLowerCase()],
     }));
     cleanFunc();
   }
@@ -79,79 +82,106 @@ const NewWorkout = () => {
     setState(initialState);
   };
 
-  return (
-    <div style={{ display: "flex" }}>
-      <form onSubmit={handleSubmit} style={{ paddingRight: "20px" }}>
-        <div>
-          <input
-            type="text"
-            name="name"
-            placeholder="Workout name"
-            value={state.name}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <input
-            type="text"
-            name="mode"
-            placeholder="Mode"
-            value={state.mode}
-            onChange={handleInputChange}
-          />
-        </div>
-        <ArrayInput
-          title="Equipment"
-          name="equipement"
-          placeholder="Add equipement"
-          value={eq}
-          onChange={(e) => setEq(e.target.value)}
-          onClick={addEquipement}
-        />
-        <ArrayInput
-          title="Exercices"
-          name="exercises"
-          placeholder="Add exercice"
-          value={exercice}
-          onChange={(e) => setExercice(e.target.value)}
-          onClick={addExercises}
-        />
-      </form>
+  const dispatch = useDispatch();
+  const counter = useSelector(counterValueSelector);
+  // const workouts = useSelector((state) => state.workouts);
 
-      <div>
-        <h1>Recap</h1>
+  const { data: workoutsList, error, isFetching } = useGetAllWorkoutsQuery();
+  const [workouts, setWorkouts] = useState([]);
+
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      const workouts = workoutsList?.data;
+      setWorkouts(workouts);
+    };
+
+    fetchWorkouts();
+  }, [workoutsList]);
+
+  console.log("workouts : ", workouts);
+  const handleInc = () => {
+    dispatch(increment());
+  };
+
+  return (
+    <>
+      {isFetching ? <div>LOADING...</div> : <div> {counter}</div>}
+
+      <button onClick={handleInc}>INCREMENT</button>
+      <div style={{ display: "flex" }}>
+        <form onSubmit={handleSubmit} style={{ paddingRight: "20px" }}>
+          <div>
+            <input
+              type="text"
+              name="name"
+              placeholder="Workout name"
+              value={state.name}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              name="mode"
+              placeholder="Mode"
+              value={state.mode}
+              onChange={handleInputChange}
+            />
+          </div>
+          <ArrayInput
+            title="Equipment"
+            name="equipement"
+            placeholder="Add equipement"
+            value={eq}
+            onChange={(e) => setEq(e.target.value)}
+            onClick={addEquipement}
+          />
+          <ArrayInput
+            title="Exercices"
+            name="exercises"
+            placeholder="Add exercice"
+            value={exercice}
+            onChange={(e) => setExercice(e.target.value)}
+            onClick={addExercises}
+          />
+        </form>
+
         <div>
-          <h3>Name</h3>
-          {state.name}
+          <h1>Recap {counter}</h1>
+
+          <div>
+            <h3>Name</h3>
+            {state.name}
+          </div>
+          <hr />
+          <div>
+            <h3>Mode</h3>
+            {state.mode}
+          </div>
+          <hr />
+          <div>
+            <h3>Equipement</h3>
+            {state.equipement.map((eq, index) => (
+              <div key={index}>
+                {eq}
+                <button onClick={() => removeEquipement(eq)}>-</button>
+              </div>
+            ))}
+          </div>
+          <hr />
+          <div>
+            <h3>Exercises</h3>
+            {state.exercises.map((ex, index) => (
+              <div key={index}>
+                {ex}
+                <button onClick={() => removeExercises(ex)}>-</button>
+              </div>
+            ))}
+          </div>
+          <button onClick={handleSubmit}>Add</button>
         </div>
-        <hr />
-        <div>
-          <h3>Mode</h3>
-          {state.mode}
-        </div>
-        <hr />
-        <div>
-          <h3>Equipement</h3>
-          {state.equipement.map((eq, index) => (
-            <div key={index}>
-              {eq}
-              <button onClick={() => removeEquipement(eq)}>-</button>
-            </div>
-          ))}
-        </div>
-        <hr />
-        <div>
-          <h3>Exercises</h3>
-          {state.exercises.map((ex, index) => (
-            <div key={index}>
-              {ex}
-              <button onClick={() => removeExercises(ex)}>-</button>
-            </div>
-          ))}
-        </div>
-        <button onClick={handleSubmit}>Add</button>
       </div>
-    </div>
+    </>
   );
 };
 
