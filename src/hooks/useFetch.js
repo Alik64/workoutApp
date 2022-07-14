@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 
 const useFetch = (url) => {
   const [isLoading, setLoading] = useState(false);
@@ -28,26 +28,3 @@ const useFetch = (url) => {
   return [data, isLoading, error];
 };
 export default useFetch;
-
-// function useFetch(url) {
-//   const [data, setData] = useState(null);
-//   const [loading, setLoading] = useState(null);
-//   const [error, setError] = useState(null);
-
-//   const myFetch = useCallback(() => {
-//     setLoading("loading...");
-//     setData(null);
-//     setError(null);
-//     fetch(url)
-//       .then((res) => {
-//         console.log(res.json());
-//       })
-//       .catch((err) => {
-//         setLoading(false);
-//         setError("An error occurred. Awkward..");
-//       });
-//   }, [url]);
-
-//   return { myFetch, data, loading, error };
-// }
-// export default useFetch;

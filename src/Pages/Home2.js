@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 
 function Home2() {
   const [data, isLoading, error] = useFetch(
     "http://localhost:8080/api/v1/workouts"
   );
-
   const workouts = data?.data?.map((workout, index) => (
     <div key={index}>
       <h2>{workout.name}</h2>
