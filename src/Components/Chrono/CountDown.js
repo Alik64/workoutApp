@@ -18,16 +18,16 @@ export default function CountDown({ session }) {
   }
 
   useEffect(() => {
-    let id;
+    let countdown;
 
     if (workingChrono) {
-      id = window.setInterval(() => {
+      countdown = window.setInterval(() => {
         trigger();
       }, 1000);
     }
 
     return () => {
-      window.clearInterval(id);
+      window.clearInterval(countdown);
     };
   }, [workingChrono, trigger]);
 

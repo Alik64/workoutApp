@@ -13,16 +13,16 @@ export default function Timer() {
   }
 
   useEffect(() => {
-    let id;
+    let timer;
 
     if (workingChrono) {
-      id = window.setInterval(() => {
+      timer = window.setInterval(() => {
         trigger();
       }, 1000);
     }
 
     return () => {
-      window.clearInterval(id);
+      window.clearInterval(timer);
     };
   }, [workingChrono, trigger]);
 
