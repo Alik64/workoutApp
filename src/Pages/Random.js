@@ -22,10 +22,15 @@ export default function Random() {
           <li key={index}>{exo}</li>
         ))}
       </ul>
+      <hr />
+      <a href="https://www.radiorecord.ru/station/workout" target="_blank">
+        Best music for workout 😉
+      </a>
+      <hr />
       {workout.timer === "timer" ? (
-        <Timer session={0} />
+        <Timer />
       ) : (
-        <CountDown session={10} />
+        <CountDown session={workout.time} />
       )}
     </div>
   ));
