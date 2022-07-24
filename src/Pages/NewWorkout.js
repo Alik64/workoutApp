@@ -86,7 +86,13 @@ const NewWorkout = () => {
   const counter = useSelector(counterValueSelector);
   // const workouts = useSelector((state) => state.workouts);
 
-  const { data: workoutsList, error, isFetching } = useGetAllWorkoutsQuery();
+  const {
+    data: workoutsList,
+    error,
+    isFetching,
+    refetch,
+  } = useGetAllWorkoutsQuery();
+
   const [workouts, setWorkouts] = useState([]);
 
   useEffect(() => {
