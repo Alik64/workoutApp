@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import CountDown from "../Components/Chrono/CountDown";
+import Pomodoro from "../Components/Chrono/Pomodoro";
+import Timer from "../Components/Chrono/Timer";
 
 import useFetch from "../hooks/useFetch";
 
@@ -19,6 +22,11 @@ export default function Random() {
           <li key={index}>{exo}</li>
         ))}
       </ul>
+      {workout.timer === "timer" ? (
+        <Timer session={0} />
+      ) : (
+        <CountDown session={10} />
+      )}
     </div>
   ));
 
@@ -28,6 +36,7 @@ export default function Random() {
       <button onClick={() => navigate("/")}>Home</button>
       <h1>Workout of the day</h1>
       {isLoading ? <div>Loading...</div> : randomWorkout}
+
       <button onClick={() => window.location.reload(false)}>Another one</button>
     </div>
   );
