@@ -1,0 +1,17 @@
+.header img {
+  width: 100%;
+  max-width: 1440px;
+  height: auto;
+}
+
+.header img {
+  filter: brightness(50%);
+}
+
+.chrono {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  bottom: 10rem;
+}

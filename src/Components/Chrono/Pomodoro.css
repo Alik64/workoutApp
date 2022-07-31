@@ -40,8 +40,14 @@
 .container-chrono {
   width: 250px;
   height: 250px;
-  border-radius: 50%;
   position: relative;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .container-controllers {
@@ -63,6 +69,13 @@
   color: blue;
 }
 
+.container-controllers {
+  position: absolute;
+  display: flex;
+  top: 250px;
+  left: 16%;
+}
+
 .container-controllers button {
   padding: 10px 15px;
   width: 75px;
@@ -80,6 +93,7 @@
   position: relative;
   box-shadow: 0 6px #4a64d8;
   border: 3px solid #4a64d8;
+
 }
 
 .container-controllers button:active {
