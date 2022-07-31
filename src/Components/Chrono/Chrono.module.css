@@ -1,4 +1,4 @@
-.anim-glow {
+.animglow {
   animation: glow 1s infinite alternate;
 }
 
@@ -13,31 +13,8 @@
 }
 
 
-.box-btns button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  font-size: 50px;
-  border: 3px solid #4a64d8;
-  background: #f1f1f1;
-  position: relative;
-  box-shadow: 0 6px #4a64d8;
-  color: #4a64d8;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-}
 
-
-
-.box-btns span {
-  font-size: 35px;
-  font-weight: bold;
-  color: #4a64d8;
-  margin: 0 15px;
-}
-
-.container-chrono {
+.containerChrono {
   width: 250px;
   height: 250px;
   position: relative;
@@ -50,15 +27,6 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.container-controllers {
-  position: relative;
-  top: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 0 0;
-
-}
 
 .time {
   position: absolute;
@@ -69,14 +37,14 @@
   color: blue;
 }
 
-.container-controllers {
+.containerControllers {
   position: absolute;
   display: flex;
   top: 250px;
   left: 16%;
 }
 
-.container-controllers button {
+.containerControllers button {
   padding: 10px 15px;
   width: 75px;
   height: 75px;
@@ -96,12 +64,25 @@
 
 }
 
-.container-controllers button:active {
+.containerControllers button:active {
   box-shadow: 0 0px #4a64d8;
   top: 6px;
 }
 
-.container-controllers img {
+.containerControllers img {
   width: 50px;
   height: 50px;
+}
+
+.circle {
+  width: 270px;
+  height: 270px;
+
+  transform-origin: center;
+  transform: rotate(-90deg);
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+
+
 }
