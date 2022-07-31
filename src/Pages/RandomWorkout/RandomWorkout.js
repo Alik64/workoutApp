@@ -34,7 +34,7 @@ export default function RandomWorkout() {
       </div>
       <h2>{workout.name}</h2>
       <h3>
-        {workout.mode} <span>{workout.time / 60}</span>
+        {workout?.mode} {workout?.time && workout?.time / 60}
       </h3>
       <ul>
         {workout?.exercises?.map((exo, index) => (

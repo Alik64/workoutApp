@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import "./Pomodoro.css";
+import React, { useState, useEffect, useCallback } from "react";
 import PauseImg from "./assets/Images/pause.svg";
 import PlayImg from "./assets/Images/play.svg";
 import ResetImg from "./assets/Images/reset.svg";
+import cn from "classnames";
+import s from "./Chrono.module.css";
+import Circle from "./Circle";
 
 export default function CountDown({ session, getTime }) {
   const [sessionTime, setSessionTime] = useState(session);
   const [workingChrono, setWorkingChrono] = useState(false);
-  const [result, setResult] = useState(null);
 
   function trigger() {
     if (sessionTime > 0) {
@@ -20,13 +21,11 @@ export default function CountDown({ session, getTime }) {
 
   useEffect(() => {
     let countdown;
-
     if (workingChrono) {
       countdown = window.setInterval(() => {
         trigger();
-      }, 1000);
+      }, 10);
     }
-
     return () => {
       window.clearInterval(countdown);
     };
@@ -47,15 +46,14 @@ export default function CountDown({ session, getTime }) {
     sessionTime % 60 < 10 ? `0${sessionTime % 60}` : `${sessionTime % 60}`
   }`;
 
-  return (
-    <div
-      className={
-        workingChrono ? "container-chrono anim-glow" : "container-chrono"
-      }
-    >
-      <h1 className="time">{time}</h1>
+  const percentage = 100 - Math.round((sessionTime / session) * 100);
 
-      <div className="container-controllers">
+  return (
+    <div className={s.containerChrono}>
+      <h1 className={s.time}>{time}</h1>
+      <Circle percentage={percentage} className={s.circle} />
+
+      <div className={s.containerControllers}>
         <button onClick={playPause}>
           <img src={workingChrono ? PauseImg : PlayImg} />
         </button>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useReducer } from "react";
-import "./Pomodoro.css";
 import PauseImg from "./assets/Images/pause.svg";
 import PlayImg from "./assets/Images/play.svg";
 import ResetImg from "./assets/Images/reset.svg";
+import s from "./Chrono.module.css";
 
 export default function Pomodoro({ session, pause }) {
   const [sessionTime, setSessionTime] = useState(session);
