@@ -4,9 +4,10 @@ import PauseImg from "./assets/Images/pause.svg";
 import PlayImg from "./assets/Images/play.svg";
 import ResetImg from "./assets/Images/reset.svg";
 
-export default function CountDown({ session }) {
+export default function CountDown({ session, getTime }) {
   const [sessionTime, setSessionTime] = useState(session);
   const [workingChrono, setWorkingChrono] = useState(false);
+  const [result, setResult] = useState(null);
 
   function trigger() {
     if (sessionTime > 0) {
@@ -52,7 +53,7 @@ export default function CountDown({ session }) {
         workingChrono ? "container-chrono anim-glow" : "container-chrono"
       }
     >
-      <h1>{time}</h1>
+      <h1 className="time">{time}</h1>
 
       <div className="container-controllers">
         <button onClick={playPause}>

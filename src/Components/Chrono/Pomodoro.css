@@ -1,11 +1,3 @@
-.container-chrono {
-  margin: 50px 0;
-  background: #f1f1f1;
-  padding: 10px;
-  min-width: 350px;
-  border-radius: 5px;
-}
-
 .anim-glow {
   animation: glow 1s infinite alternate;
 }
@@ -20,11 +12,6 @@
   }
 }
 
-.container-config {
-  display: flex;
-  justify-content: center;
-  padding: 70px 0 0;
-}
 
 .box-btns button {
   width: 60px;
@@ -41,10 +28,7 @@
   align-items: center;
 }
 
-.box-btns button:active {
-  box-shadow: 0 0px #4a64d8;
-  top: 6px;
-}
+
 
 .box-btns span {
   font-size: 35px;
@@ -53,48 +37,30 @@
   margin: 0 15px;
 }
 
-.box-btns:nth-child(1) {
-  margin-right: 30px;
-}
-
-.box-btns:nth-child(1), .box-btns:nth-child(2) {
+.container-chrono {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
   position: relative;
 }
 
-.box-btns:nth-child(1)::before, .box-btns:nth-child(2)::before {
-  content: "Session";
-  position: absolute;
-  left: 51%;
-  top: -30px;
-  transform: translateX(-50%);
-  font-size: 20px;
-  text-transform: uppercase;
-  color: #4a64d8;
-}
-
-.box-btns:nth-child(2)::before {
-  content: "BREAK";
-}
-
-h1 {
-  font-size: 70px;
-  text-align: center;
-  padding-top: 60px;
-  color: #4a64d8
-}
-
-h1 span {
-  border-radius: 5px;
-  padding: 15px;
-  background: #4a64d8;
-}
-
-
 .container-controllers {
+  position: relative;
+  top: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 0 0;
+  padding: 10px 0 0;
+
+}
+
+.time {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 50px;
+  color: blue;
 }
 
 .container-controllers button {
@@ -124,9 +90,4 @@ h1 span {
 .container-controllers img {
   width: 50px;
   height: 50px;
-}
-
-.container-controllers img[src="/static/media/pause.51695783.svg"] {
-  width: 20px;
-  height: 20px;
 }

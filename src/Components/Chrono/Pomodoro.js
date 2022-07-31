@@ -12,9 +12,9 @@ export default function Pomodoro({ session, pause }) {
   const [breakTimeFixed, setBreakTimeFixed] = useState(pause);
 
   const [workingChrono, setWorkingChrono] = useState(false);
-  const [_, dispatch] = useReducer(reducer);
+  const [state, dispatch] = useReducer(reducer);
 
-  function reducer(_, action) {
+  function reducer(state, action) {
     switch (action.type) {
       case "TICK":
         if (sessionTime >= 0) {

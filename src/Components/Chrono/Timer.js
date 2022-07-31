@@ -4,27 +4,23 @@ import PauseImg from "./assets/Images/pause.svg";
 import PlayImg from "./assets/Images/play.svg";
 import ResetImg from "./assets/Images/reset.svg";
 
-export default function Timer() {
+export default function Timer({ getTime }) {
   const [sessionTime, setSessionTime] = useState(0);
   const [workingChrono, setWorkingChrono] = useState(false);
-
-  function trigger() {
-    setSessionTime(sessionTime + 1);
-  }
 
   useEffect(() => {
     let timer;
 
     if (workingChrono) {
       timer = window.setInterval(() => {
-        trigger();
+        setSessionTime((sessionTime) => sessionTime + 1);
       }, 1000);
     }
 
     return () => {
       window.clearInterval(timer);
     };
-  }, [workingChrono, trigger]);
+  }, [workingChrono, setSessionTime]);
 
   const playPause = () => {
     setWorkingChrono(!workingChrono);
@@ -47,7 +43,7 @@ export default function Timer() {
         workingChrono ? "container-chrono anim-glow" : "container-chrono"
       }
     >
-      <h1>{time}</h1>
+      <h1 className="time">{time}</h1>
 
       <div className="container-controllers">
         <button onClick={playPause}>
