@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const baseUrl = "http://localhost:8080/api/v1";
-const baseUrl = "https://triple-triad-game.herokuapp.com/api/v1/characters";
+const baseUrl = "http://localhost:8080/api/v1/workouts";
 
 const createRequest = (url) => ({ url });
 
@@ -12,7 +11,10 @@ export const workoutsApi = createApi({
     getAllWorkouts: builder.query({
       query: () => createRequest("/"),
     }),
+    getRandomWorkout: builder.query({
+      query: () => createRequest("/random"),
+    }),
   }),
 });
 
-export const { useGetAllWorkoutsQuery } = workoutsApi;
+export const { useGetAllWorkoutsQuery, useGetRandomWorkoutQuery } = workoutsApi;
