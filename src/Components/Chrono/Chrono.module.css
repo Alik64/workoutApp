@@ -1,5 +1,5 @@
 .animglow {
-  animation: glow 1s infinite alternate;
+  animation: glow 0.5s infinite alternate;
 }
 
 @keyframes glow {

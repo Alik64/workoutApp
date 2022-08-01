@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import PauseImg from "./assets/Images/pause.svg";
 import PlayImg from "./assets/Images/play.svg";
 import ResetImg from "./assets/Images/reset.svg";
-import cn from "classnames";
+
 import s from "./Chrono.module.css";
 import Circle from "./Circle";
 
@@ -24,7 +24,7 @@ export default function CountDown({ session, getTime }) {
     if (workingChrono) {
       countdown = window.setInterval(() => {
         trigger();
-      }, 10);
+      }, 1000);
     }
     return () => {
       window.clearInterval(countdown);
