@@ -8,6 +8,7 @@ test("renders learn react link", () => {
       <App />
     </MemoryRouter>
   );
-  const homeTitle = screen.getByText(/home/i);
-  expect(homeTitle).toBeInTheDocument();
+
+  const start_box = screen.queryByTestId("home_start");
+  expect(start_box).toBeNull();
 });
