@@ -1,0 +1,55 @@
+.root {
+
+  height: 100vh;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.loading {
+  animation: blink 0.8s infinite alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 0.6
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+.home_start {
+  position: static;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 50px 100px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+
+}
+
+.home_start a {
+  font-size: 20px;
+}
+
+.home_start a:hover {
+  color: blue;
+}
+
+.video {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  object-fit: cover;
+}
