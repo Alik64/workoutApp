@@ -24,7 +24,7 @@ export default function CountDown({ session, getTime }) {
     if (workingChrono) {
       countdown = window.setInterval(() => {
         trigger();
-      }, 1000);
+      }, 10);
     }
     return () => {
       window.clearInterval(countdown);

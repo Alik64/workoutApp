@@ -30,9 +30,9 @@ export default function RandomWorkout() {
   const randomWorkout = data?.data?.map((workout, index) => (
     <div key={index}>
       <div className={s.chrono}>
-        <Chrono mode={workout.timer} time={workout.time} getTime={getTime} />
+        <Chrono mode={workout?.timer} time={workout?.time} getTime={getTime} />
       </div>
-      <h2>{workout.name}</h2>
+      <h2>{workout?.name}</h2>
       <h3>
         {workout?.mode} {workout?.time && workout?.time / 60}
       </h3>

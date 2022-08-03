@@ -9,7 +9,8 @@ const NewWorkout = () => {
   const initialState = {
     name: "",
     mode: "",
-    equipement: [],
+    timer: "",
+    time: "",
     exercises: [],
   };
 
@@ -56,7 +57,8 @@ const NewWorkout = () => {
     let data = JSON.stringify({
       name: state.name,
       mode: state.mode,
-      equipment: state.equipement,
+      timer: state.timer,
+      time: state.time,
       exercises: state.exercises,
     });
 
@@ -82,38 +84,8 @@ const NewWorkout = () => {
     setState(initialState);
   };
 
-  const dispatch = useDispatch();
-  const counter = useSelector(counterValueSelector);
-  // const workouts = useSelector((state) => state.workouts);
-
-  const {
-    data: workoutsList,
-    error,
-    isFetching,
-    refetch,
-  } = useGetAllWorkoutsQuery();
-
-  const [workouts, setWorkouts] = useState([]);
-
-  useEffect(() => {
-    const fetchWorkouts = async () => {
-      const workouts = workoutsList?.data;
-      setWorkouts(workouts);
-    };
-
-    fetchWorkouts();
-  }, [workoutsList]);
-
-  console.log("workouts : ", workouts);
-  const handleInc = () => {
-    dispatch(increment());
-  };
-
   return (
     <>
-      {isFetching ? <div>LOADING...</div> : <div> {counter}</div>}
-
-      <button onClick={handleInc}>INCREMENT</button>
       <div style={{ display: "flex" }}>
         <form onSubmit={handleSubmit} style={{ paddingRight: "20px" }}>
           <div>
@@ -133,15 +105,25 @@ const NewWorkout = () => {
               value={state.mode}
               onChange={handleInputChange}
             />
+          </div>{" "}
+          <div>
+            <input
+              type="text"
+              name="timer"
+              placeholder="Timer/Reb"
+              value={state.timer}
+              onChange={handleInputChange}
+            />
+          </div>{" "}
+          <div>
+            <input
+              type="text"
+              name="time"
+              placeholder="Time in sec"
+              value={state.time}
+              onChange={handleInputChange}
+            />
           </div>
-          <ArrayInput
-            title="Equipment"
-            name="equipement"
-            placeholder="Add equipement"
-            value={eq}
-            onChange={(e) => setEq(e.target.value)}
-            onClick={addEquipement}
-          />
           <ArrayInput
             title="Exercices"
             name="exercises"
@@ -151,41 +133,39 @@ const NewWorkout = () => {
             onClick={addExercises}
           />
         </form>
+      </div>
 
+      <div>
         <div>
-          <h1>Recap {counter}</h1>
-
-          <div>
-            <h3>Name</h3>
-            {state.name}
-          </div>
-          <hr />
-          <div>
-            <h3>Mode</h3>
-            {state.mode}
-          </div>
-          <hr />
-          <div>
-            <h3>Equipement</h3>
-            {state.equipement.map((eq, index) => (
-              <div key={index}>
-                {eq}
-                <button onClick={() => removeEquipement(eq)}>-</button>
-              </div>
-            ))}
-          </div>
-          <hr />
-          <div>
-            <h3>Exercises</h3>
-            {state.exercises.map((ex, index) => (
-              <div key={index}>
-                {ex}
-                <button onClick={() => removeExercises(ex)}>-</button>
-              </div>
-            ))}
-          </div>
-          <button onClick={handleSubmit}>Add</button>
+          <h3>Name</h3>
+          {state.name}
         </div>
+        <hr />
+        <div>
+          <h3>Mode</h3>
+          {state.mode}
+        </div>
+        <hr />
+        <div>
+          <h3>Equipement</h3>
+          {state.equipement?.map((eq, index) => (
+            <div key={index}>
+              {eq}
+              <button onClick={() => removeEquipement(eq)}>-</button>
+            </div>
+          ))}
+        </div>
+        <hr />
+        <div>
+          <h3>Exercises</h3>
+          {state.exercises.map((ex, index) => (
+            <div key={index}>
+              {ex}
+              <button onClick={() => removeExercises(ex)}>-</button>
+            </div>
+          ))}
+        </div>
+        <button onClick={handleSubmit}>Add</button>
       </div>
     </>
   );
