@@ -1,7 +1,14 @@
 import s from "./Signup.module.css";
 
 const Signup = () => {
-  return <div className={s.root}></div>;
+  return (
+    <form className={s.root}>
+      <input type="email" />
+      <input type="password" />
+      <input type="password" />
+      <button>let's go</button>
+    </form>
+  );
 };
 
 export default Signup;
