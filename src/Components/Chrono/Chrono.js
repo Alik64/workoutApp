@@ -2,7 +2,8 @@ import React from "react";
 import CountDown from "./CountDown";
 import Timer from "./Timer";
 
-const Chrono = ({ mode, time, getTime }) => {
+const Chrono = ({ mode = "timer", time, getTime }) => {
+  console.log("mode : ", mode);
   return (
     <>
       {mode === "timer" ? (
