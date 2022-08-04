@@ -6,6 +6,9 @@ const Counter = ({ getRound }) => {
     setCount((prev) => prev + 1);
   };
   const handleDec = () => {
+    if (count === 0) {
+      return;
+    }
     setCount((prev) => prev - 1);
   };
 
