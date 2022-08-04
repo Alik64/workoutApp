@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import CountDown from "../../Components/Chrono/CountDown";
-import Timer from "../../Components/Chrono/Timer";
 import Counter from "../../Components/Counter/Counter";
 
 import { useGetRandomWorkoutQuery } from "../../redux/services/workoutsApi";
@@ -10,6 +8,7 @@ import { useGetRandomWorkoutQuery } from "../../redux/services/workoutsApi";
 import baniere from "../../Assets/Images/baniere.jpg";
 import s from "./RandomWorkout.module.css";
 import Chrono from "../../Components/Chrono/Chrono";
+import Workout from "./Workout";
 
 export default function RandomWorkout() {
   const [round, setRound] = useState(0);
@@ -19,9 +18,12 @@ export default function RandomWorkout() {
 
   const { data, isLoading } = useGetRandomWorkoutQuery();
 
-  const getRound = (val) => {
-    setRound(val);
-  };
+  const getRound = useCallback(
+    (val) => {
+      setRound(val);
+    },
+    [round]
+  );
 
   const getTime = (val) => {
     setTime(val);
@@ -32,19 +34,12 @@ export default function RandomWorkout() {
       <div className={s.chrono}>
         <Chrono mode={workout?.timer} time={workout?.time} getTime={getTime} />
       </div>
-      <h2>{workout?.name}</h2>
-      <h3>
-        {workout?.mode} {workout?.time && workout?.time / 60}
-      </h3>
-      <ul>
-        {workout?.exercises?.map((exo, index) => (
-          <li key={index}>{exo}</li>
-        ))}
-      </ul>
-      <hr />
-      <a href="https://www.radiorecord.ru/station/workout" target="_blank">
-        Best music for workout 😉
-      </a>
+      <div className={s.workout}>
+        <button onClick={() => window.location.reload(false)}>
+          Another one
+        </button>
+        <Workout workout={workout} />
+      </div>
       <hr />
       <Counter getRound={getRound} />
     </div>
@@ -56,9 +51,10 @@ export default function RandomWorkout() {
       <div className={s.header}>
         <img src={baniere} alt="muscle man" />
       </div>
-      <button onClick={() => navigate("/")}>Home</button>
+      <button className={s.homeBtn} onClick={() => navigate("/")}>
+        Home
+      </button>
       {isLoading ? <div>Loading...</div> : randomWorkout}
-      <button onClick={() => window.location.reload(false)}>Another one</button>
     </div>
   );
 }

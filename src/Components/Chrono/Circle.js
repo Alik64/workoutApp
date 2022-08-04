@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function Circle({ percentage = 100, className }) {
   const radius = 125;

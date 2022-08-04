@@ -25,15 +25,14 @@
   backdrop-filter: blur(10.5px);
   -webkit-backdrop-filter: blur(10.5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 .time {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%);
-  margin-top: 50px;
+  font-size: 60px;
   color: blue;
 }
 
@@ -77,12 +76,9 @@
 .circle {
   width: 270px;
   height: 270px;
-
   transform-origin: center;
   transform: rotate(-90deg);
   position: absolute;
   bottom: -10px;
   right: -10px;
-
-
 }
