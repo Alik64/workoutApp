@@ -13,7 +13,7 @@ function Home() {
       () => {
         setLoading(false);
       },
-      4000,
+      1000,
       { once: true }
     );
   });

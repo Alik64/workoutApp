@@ -1,14 +1,13 @@
-import s from "./Signup.module.css";
+import s from "./Auth.module.css";
 
-const Signup = () => {
+const Login = () => {
   return (
     <form className={s.root}>
       <input type="email" />
-      <input type="password" />
       <input type="password" />
       <button>let's go</button>
     </form>
   );
 };
 
-export default Signup;
+export default Login;

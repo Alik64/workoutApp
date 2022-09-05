@@ -1,13 +1,14 @@
-import s from "./Login.module.css";
+import s from "./Auth.module.css";
 
-const Login = () => {
+const Register = () => {
   return (
     <form className={s.root}>
       <input type="email" />
+      <input type="password" />
       <input type="password" />
       <button>let's go</button>
     </form>
   );
 };
 
-export default Login;
+export default Register;
