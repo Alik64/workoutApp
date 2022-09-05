@@ -12,7 +12,6 @@ function Home() {
     setTimeout(
       () => {
         setLoading(false);
-        console.log("isLoading");
       },
       4000,
       { once: true }

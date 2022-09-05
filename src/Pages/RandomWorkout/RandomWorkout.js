@@ -17,7 +17,7 @@ export default function RandomWorkout() {
   const navigate = useNavigate();
 
   const { data, isLoading } = useGetRandomWorkoutQuery();
-
+  console.log("data : ", data);
   const getRound = useCallback(
     (val) => {
       setRound(val);
@@ -29,22 +29,6 @@ export default function RandomWorkout() {
     setTime(val);
   };
 
-  const randomWorkout = data?.data?.map((workout, index) => (
-    <div key={index}>
-      <div className={s.chrono}>
-        <Chrono mode={workout?.timer} time={workout?.time} getTime={getTime} />
-      </div>
-      <div className={s.workout}>
-        <button onClick={() => window.location.reload(false)}>
-          Another one
-        </button>
-        <Workout workout={workout} />
-      </div>
-      <hr />
-      <Counter getRound={getRound} />
-    </div>
-  ));
-
   // console.log('"render" : ', "render");
   return (
     <div className={s.root}>
@@ -54,7 +38,19 @@ export default function RandomWorkout() {
       <button className={s.homeBtn} onClick={() => navigate("/")}>
         Home
       </button>
-      {isLoading ? <div>Loading...</div> : randomWorkout}
+      <div>
+        <div className={s.chrono}>
+          <Chrono mode={data?.timer} time={data?.time} getTime={getTime} />
+        </div>
+        <div className={s.workout}>
+          <button onClick={() => window.location.reload(false)}>
+            Another one
+          </button>
+          <Workout workout={data} />
+        </div>
+        <hr />
+        <Counter getRound={getRound} />
+      </div>
     </div>
   );
 }
