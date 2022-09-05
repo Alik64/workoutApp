@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ArrayInput from "../Components/UI/ArrayInput";
-import { useDispatch, useSelector } from "react-redux";
-import { counterValueSelector, increment } from "../redux/counterSlice";
-import { useGetAllWorkoutsQuery } from "../redux/services/workoutsApi";
 
 const NewWorkout = () => {
   const initialState = {
