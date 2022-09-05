@@ -6,6 +6,7 @@ import { Login, Register } from "./Pages/Auth";
 import NewWorkout from "./Pages/NewWorkout";
 
 import RandomWorkout from "./Pages/RandomWorkout";
+import { Profile } from "./Pages/Profile";
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Register />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/user-profile" element={<Profile />} />
         <Route path="/random" element={<RandomWorkout />} />
         <Route path="/newWorkout" element={<NewWorkout />} />
       </Routes>
