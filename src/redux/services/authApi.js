@@ -2,29 +2,23 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseUrl = "http://localhost:8080/api/v1/auth";
 
-const createRequest = (url) => ({ url });
-
-export const workoutsApi = createApi({
+export const authApi = createApi({
   reducerPath: "auth",
+  tagTypes: ["Auth"],
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     login: builder.mutation({
-      query: (payload) => ({
+      query: (body) => ({
         url: "/login",
         method: "POST",
-        body: payload,
+        body,
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
       }),
-    }),
-    register: builder.query({
-      query: () => createRequest("/register"),
-    }),
-    register: builder.query({
-      query: () => createRequest("/me"),
+      invalidatesTags: ["Auth"],
     }),
   }),
 });
 
-export const { useGetAllWorkoutsQuery, useGetRandomWorkoutQuery } = workoutsApi;
+export const { useLoginMutation } = authApi;

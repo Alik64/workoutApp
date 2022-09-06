@@ -1,26 +1,32 @@
 import s from "./Auth.module.css";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "../../redux/features/user/userSlice";
+
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { loginUser } from "../../redux/features/user/userSlice";
+import { useLoginMutation } from "../../redux/services/authApi";
 
 const LoginScreen = () => {
   const { register, handleSubmit } = useForm();
-  const { loading, userInfo, error } = useSelector((state) => state.user);
+  const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (userInfo) {
-      navigate("/user-profile");
-    }
-  }, [navigate, userInfo]);
-
-  const submitForm = (data) => {
-    dispatch(userLogin(data));
+  const handleLogin = async (data) => {
+    let result = await login({
+      email: data.email,
+      password: data.password,
+    });
+    dispatch(loginUser(result.data));
+    console.log("result : ", result);
   };
-  console.log("error : ", error);
+
+  const submitForm = (formData) => {
+    handleLogin(formData);
+    navigate("/user-profile");
+  };
+
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <div className="form-group">
