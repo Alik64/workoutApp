@@ -30,7 +30,7 @@ function Home() {
             <source src={backgroundVideo} type="video/mp4" />
           </video>
           <Link to={"/login"}>Login</Link>
-          <Link to={"/signup"}>Signin</Link>
+          <Link to={"/register"}>Signin</Link>
           <Link to={"/random"}>Just train!</Link>
         </section>
       )}
