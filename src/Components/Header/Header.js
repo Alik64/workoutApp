@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { getUserDetails } from "../../redux/features/user/userSlice";
 import { logout } from "../../redux/features/user/userSlice";
+import { useAuthMeQuery } from "../../redux/services/authApi";
 
 const Header = () => {
   const { userInfo, userToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const { data, isLoading } = useAuthMeQuery();
   // automatically authenticate user if token is found
   useEffect(() => {
-    if (userToken) {
-      dispatch(getUserDetails());
+    if (data) {
+      console.log(data);
     }
   }, [userToken, dispatch]);
 
