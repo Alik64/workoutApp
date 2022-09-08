@@ -1,30 +1,19 @@
+import { useContext } from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+
 import { NavLink } from "react-router-dom";
-import { getUserDetails } from "../../redux/features/user/userSlice";
-import { logout } from "../../redux/features/user/userSlice";
-import { useAuthMeQuery } from "../../redux/services/authApi";
+import { AuthContext } from "../../context/AuthContext";
 
 const Header = () => {
-  const { userInfo, userToken } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const { data, isLoading } = useAuthMeQuery();
   // automatically authenticate user if token is found
-  useEffect(() => {
-    if (data) {
-      console.log(data);
-    }
-  }, [userToken, dispatch]);
-
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
   return (
     <header style={{ borderBottom: "1px solid white" }}>
       <div className="header-status">
-        <span>
-          {userInfo ? `Logged in as ${userInfo.email}` : "You're not logged in"}
-        </span>
+        <span></span>
         <div className="cta">
-          {userInfo ? (
-            <button className="button" onClick={() => dispatch(logout())}>
+          {currentUser ? (
+            <button className="button" onClick={() => setCurrentUser(null)}>
               Logout
             </button>
           ) : (

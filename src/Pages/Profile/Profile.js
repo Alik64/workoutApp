@@ -1,16 +1,16 @@
 import s from "./Profile.module.css";
 
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const Profile = () => {
-  const { userInfo } = useSelector((state) => state.user);
-
+  const { currentUser } = useContext(AuthContext);
+  console.log("currentUser : ", currentUser);
   return (
     <div>
-      <figure>{userInfo?.name?.charAt(0).toUpperCase()}</figure>
+      <figure>{currentUser?.name?.charAt(0).toUpperCase()}</figure>
       <span>
-        Welcome <strong>{userInfo?.name}!</strong> You can view this page
-        because you're logged in
+        Welcome <strong>{currentUser?.name}!</strong>
       </span>
     </div>
   );

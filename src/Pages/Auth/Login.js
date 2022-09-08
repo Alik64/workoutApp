@@ -1,29 +1,17 @@
 import s from "./Auth.module.css";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import { loginUser } from "../../redux/features/user/userSlice";
-import { useLoginMutation } from "../../redux/services/authApi";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 const LoginScreen = () => {
   const { register, handleSubmit } = useForm();
-  const [login, { isLoading }] = useLoginMutation();
-  const dispatch = useDispatch();
+  const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogin = async (data) => {
-    let result = await login({
-      email: data.email,
-      password: data.password,
-    });
-    dispatch(loginUser(result.data));
-    console.log("result : ", result);
-  };
-
   const submitForm = (formData) => {
-    handleLogin(formData);
+    login(formData);
     navigate("/user-profile");
   };
 
