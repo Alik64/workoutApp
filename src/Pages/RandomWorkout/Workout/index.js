@@ -1,3 +1,1 @@
-import Workout from './Workout';
-
-export default Workout;
+export { default as Workout } from "./Workout";

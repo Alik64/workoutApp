@@ -1,2 +1,1 @@
-import RandomWorkout from "./RandomWorkout";
-export default RandomWorkout;
+export { default as RandomWorkout } from "./RandomWorkout";

@@ -6,7 +6,7 @@ import Counter from "../../Components/Counter/Counter";
 import baniere from "../../Assets/Images/baniere.jpg";
 import s from "./RandomWorkout.module.css";
 import Chrono from "../../Components/Chrono/Chrono";
-import Workout from "./Workout";
+import { Workout } from "./Workout";
 
 export default function RandomWorkout() {
   const [round, setRound] = useState(0);

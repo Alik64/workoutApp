@@ -1,9 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./Pages/Home/Home";
+import { Home } from "./Pages/Home";
 import { Login, Register } from "./Pages/Auth";
-
-import RandomWorkout from "./Pages/RandomWorkout";
+import { RandomWorkout } from "./Pages/RandomWorkout";
 import { Profile } from "./Pages/Profile";
 import ProtectedRoute from "./routing/ProtectedRoute";
 
