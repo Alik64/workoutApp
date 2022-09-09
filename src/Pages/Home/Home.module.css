@@ -6,7 +6,16 @@
   position: relative;
 }
 
-.loading {
+
+
+.home_start a:hover {
+  color: blue;
+}
+
+
+.logo {
+  width: 320px;
+  height: 320px;
   animation: blink 0.8s infinite alternate;
 }
 
@@ -18,23 +27,6 @@
   to {
     opacity: 1
   }
-}
-
-
-
-.home_start a {
-  font-size: 20px;
-}
-
-.home_start a:hover {
-  color: blue;
-}
-
-
-.logo {
-  animation: blink 0.8s infinite alternate;
-  width: 270px;
-  height: 270px;
 }
 
 .links {
@@ -64,7 +56,7 @@
   color: var(--customBlue);
 }
 
-.links :nth-child(3) {
+.links :nth-child(4) {
   background: #fff;
   color: var(--customBlue)
 }

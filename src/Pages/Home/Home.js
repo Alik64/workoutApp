@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-// import { ReactComponent as Logo } from "../../Assets/Images/logo.svg";
 import logo from "../../Assets/Images/logo.png";
 import s from "./Home.module.css";
 
@@ -17,6 +15,7 @@ function Home() {
           <Link to={"/login"} className={s.link}>
             Login
           </Link>
+          <h3>or</h3>
           <Link to={"/random"} className={s.link}>
             Just train!
           </Link>
