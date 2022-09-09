@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "../../axios";
 import Counter from "../../Components/Counter/Counter";
-
-import { useGetRandomWorkoutQuery } from "../../redux/services/workoutsApi";
 
 import baniere from "../../Assets/Images/baniere.jpg";
 import s from "./RandomWorkout.module.css";
@@ -13,11 +11,18 @@ import Workout from "./Workout";
 export default function RandomWorkout() {
   const [round, setRound] = useState(0);
   const [time, setTime] = useState(null);
+  const [data, setData] = useState();
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios("/workouts/random");
+      setData(res.data);
+    };
+    fetchData();
+  }, []);
+  console.log("data : ", data);
   const navigate = useNavigate();
 
-  const { data, isLoading } = useGetRandomWorkoutQuery();
-  console.log("data : ", data);
   const getRound = useCallback(
     (val) => {
       setRound(val);
