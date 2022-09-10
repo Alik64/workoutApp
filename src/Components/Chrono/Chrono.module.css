@@ -44,14 +44,6 @@
   left: 16%;
 }
 
-.btn {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  background: transparent;
-  border: none;
-}
-
 .startBtn {
   border: 5px solid var(--customGreen);
   color: var(--customGreen);
