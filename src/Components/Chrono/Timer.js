@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import PauseImg from "./assets/Images/pause.svg";
-import PlayImg from "./assets/Images/play.svg";
-import ResetImg from "./assets/Images/reset.svg";
 
-import s from "./Chrono.module.css";
 import cn from "classnames";
+import s from "./Chrono.module.css";
 
 export default function Timer({ getTime }) {
   const [sessionTime, setSessionTime] = useState(0);
@@ -44,9 +41,7 @@ export default function Timer({ getTime }) {
       <h1 className={s.time}>{time}</h1>
 
       <div className={s.containerControllers}>
-        <button onClick={playPause}>
-          {workingChrono ? "PauseImg" : "PlayImg"}
-        </button>
+        <button onClick={playPause}>{workingChrono ? "PAUSE" : "START"}</button>
         <button onClick={resetFunc}>reset</button>
       </div>
     </div>

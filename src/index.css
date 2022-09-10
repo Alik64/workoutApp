@@ -29,3 +29,13 @@ a {
 li {
   text-decoration: none;
 }
+
+.btn {
+  cursor: pointer;
+  color: #fff;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+}

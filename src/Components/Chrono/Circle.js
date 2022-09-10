@@ -9,8 +9,9 @@ export default function Circle({ percentage = 100, className }) {
   return (
     <svg className={className}>
       <circle
-        stroke="#00A"
+        stroke="var(--customBlue)"
         strokeWidth="10"
+        strokeLinecap="round"
         cx="135"
         cy="135"
         r="125"

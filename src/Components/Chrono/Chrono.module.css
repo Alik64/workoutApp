@@ -1,10 +1,12 @@
+/* TIMER */
+
 .animglow {
   animation: glow 0.5s infinite alternate;
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 10px 0px #f4b0ae;
+    box-shadow: 0 0 10px 0px var(--customBlue);
   }
 
   to {
@@ -13,12 +15,11 @@
 }
 
 
-
 .containerChrono {
   width: 250px;
   height: 250px;
   position: relative;
-  /* From https://css.glass */
+
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -33,7 +34,7 @@
 
 .time {
   font-size: 60px;
-  color: blue;
+  color: #fff;
 }
 
 .containerControllers {
@@ -43,34 +44,27 @@
   left: 16%;
 }
 
-.containerControllers button {
-  padding: 10px 15px;
-  width: 75px;
-  height: 75px;
+.btn {
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  margin: 5px;
+  background: transparent;
   border: none;
-  background: #f1f1f1;
-  text-transform: uppercase;
-  cursor: pointer;
-  outline: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  box-shadow: 0 6px #4a64d8;
-  border: 3px solid #4a64d8;
-
 }
 
-.containerControllers button:active {
-  box-shadow: 0 0px #4a64d8;
-  top: 6px;
+.startBtn {
+  border: 5px solid var(--customGreen);
+  color: var(--customGreen);
 }
 
-.containerControllers img {
-  width: 50px;
-  height: 50px;
+.startBtn:disabled {
+  border: 5px solid #75ff737d;
+  color: #75ff737d;
+}
+
+.resetBtn {
+  border: 5px solid var(--customPink);
+  color: var(--customPink);
 }
 
 .circle {
