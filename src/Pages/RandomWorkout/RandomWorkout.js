@@ -6,8 +6,10 @@ import axios from "../../axios";
 import Counter from "../../Components/Counter/Counter";
 
 import baniere from "../../Assets/Images/baniere.jpg";
+import shuffle from "./Assets/images/shuffle.png";
 import { Chrono } from "../../Components/Chrono";
 import { Workout } from "./Workout";
+import cn from "classnames";
 import s from "./RandomWorkout.module.css";
 
 export default function RandomWorkout() {
@@ -48,10 +50,10 @@ export default function RandomWorkout() {
         </div>
         <div className={s.workout}>
           <button
-            className={s.shuffleBtn}
+            className={cn(s.shuffleBtn, "btn")}
             onClick={() => window.location.reload(false)}
           >
-            Another one
+            <img src={shuffle} alt="shuffle ico" className="btn" />
           </button>
           <Workout workout={data} />
         </div>

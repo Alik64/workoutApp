@@ -51,15 +51,15 @@ export default function CountDown({ session, getTime }) {
       <h1 className={s.time}>{time}</h1>
       <Circle percentage={percentage} className={s.circle} />
       <div className={s.containerControllers}>
+        <button className={cn(s.resetBtn, "btn")} onClick={resetFunc}>
+          Reset
+        </button>
         <button
           className={cn(s.startBtn, "btn")}
           onClick={playPause}
           disabled={sessionTime === 0 ? true : false}
         >
           {workingChrono ? "PAUSE" : "START"}
-        </button>
-        <button className={cn(s.resetBtn, "btn")} onClick={resetFunc}>
-          Reset
         </button>
       </div>
     </div>
