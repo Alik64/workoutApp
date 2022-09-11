@@ -28,6 +28,11 @@
   align-items: center;
   position: absolute;
   right: 30px;
-  border: 5px solid var(--customGreen);
-  color: var(--customGreen);
+  border: 5px solid var(--customBlue);
+  color: var(--customBlue);
+}
+
+.shuffleBtn img {
+  width: 80px;
+  height: 80px;
 }

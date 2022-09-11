@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import s from "./Counter.module.css";
+import cn from "classnames";
 const Counter = ({ getRound }) => {
   const [count, setCount] = useState(0);
   const handleInc = () => {
@@ -18,9 +19,13 @@ const Counter = ({ getRound }) => {
 
   return (
     <div>
-      <div>{count}</div>
-      <button onClick={handleInc}>+</button>
-      <button onClick={handleDec}>-</button>
+      <div className={cn("circle", s.count)}>{count}</div>
+      <button className="circle" onClick={handleDec}>
+        -
+      </button>
+      <button className="circle" onClick={handleInc}>
+        +
+      </button>
     </div>
   );
 };

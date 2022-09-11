@@ -50,10 +50,10 @@ export default function RandomWorkout() {
         </div>
         <div className={s.workout}>
           <button
-            className={cn(s.shuffleBtn, "btn")}
+            className={cn(s.shuffleBtn, "circle")}
             onClick={() => window.location.reload(false)}
           >
-            <img src={shuffle} alt="shuffle ico" className="btn" />
+            <img src={shuffle} alt="shuffle ico" />
           </button>
           <Workout workout={data} />
         </div>
