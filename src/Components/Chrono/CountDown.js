@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "../../index.css";
 import cn from "classnames";
+import "../../index.css";
 import s from "./Chrono.module.css";
 import Circle from "./Circle";
 
